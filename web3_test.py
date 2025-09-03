@@ -2,7 +2,7 @@ from web3 import Web3
 from decimal import Decimal, getcontext
 import time
 
-# 設▒~Z Decimal ▒~Z~D精度
+# 設定 Decimal 的精度
 getcontext().prec = 40
 
 INFURA_URL = "https://mainnet.infura.io/v3/4bb56e71ab134308ae0482a142a4205f"
@@ -48,13 +48,13 @@ def get_eth_usdc_price():
     adjusted_price = price * Decimal("1e-12")
     print(f"[Debug] adjusted_price = price * 1e-12 = {adjusted_price}")
     eth_usdc_price = Decimal("1") / adjusted_price
-    print(f"▒~\~E 1 ETH ▒~I~H {eth_usdc_price:.2f} USDC")
+    print(f"✅ 1 ETH ≈ {eth_usdc_price:.2f} USDC")
     return eth_usdc_price
 
 while True:
     try:
         price = get_eth_usdc_price()
-        print(f"\n▒~\~E ETH/USDC 實▒~Z~[▒~C▒▒| ▒▒~Z▒~D {price:.2f} USDC\n")
+        print(f"\n✅ ETH/USDC 實際價格：約 {price:.2f} USDC\n")
     except Exception as e:
-        print("▒~]~L ▒~Y▒▒~T~_▒~L▒誤▒~Z", e)
+        print("❌ 發生錯誤：", e)
     time.sleep(5)
